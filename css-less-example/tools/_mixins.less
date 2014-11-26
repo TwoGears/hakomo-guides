@@ -1,0 +1,129 @@
+/*------------------------------------*\
+    #MIXINS
+\*------------------------------------*/
+
+
+.remove-bootstrap-space() {
+	.container {
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+		.row {
+			margin-left: 0;
+			margin-right: 0;
+			.col-md-12 {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+}
+
+.restore-bootstrap-space(@container-width) {
+	.container {
+		padding-left: 15px;
+		padding-right: 15px;
+		margin-left: auto;
+		margin-right: auto;
+		width: @container-width;
+		.row {
+			margin-left: -15px;
+			margin-right: -15px;
+			.col-md-12 {
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		}
+	}
+}
+
+.fixed-top() {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.inline-block() {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+.transition(@transition) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-o-transition: @transition;
+	transition: @transition;
+}
+
+.vertical-center-pos(@position: relative) {
+	position: @position;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.vertical-center-display(@display) {
+	// display could be inline-block or table-cell
+	display: @display;
+	vertical-align: middle;
+}
+
+.vertical-center-ghost(@to-center) {
+	position: relative;
+
+	&:before {
+	  content: " ";
+	  height: 100%;
+	  width: 1%;
+	  .vertical-center-display(inline-block);
+	}
+
+	@{to-center} {
+	  .vertical-center-display(inline-block);
+	}
+}
+
+.vertical-center-flexbox() {
+	// on parent
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.full-height() {
+	height: 100%;
+}
+
+.size(@width, @height, @add) {
+	width: @width + @add;
+	height: @height + @add;
+	-webkit-background-size: @width @height;
+	background-size: @width @height;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.background-color-tr(@tr-color, @fallback) {
+	background-color: @fallback;
+	background-color: @tr-color;
+}
+
+.background-image(@img-name, @fallback) {
+	background: @fallback;
+	background-image: url('@{images}@{img-name}');
+}
+
+.background-image-responsive(@img-name, @fallback) {
+	background: @fallback;
+	background-image: url('@{images}@{img-name}');
+	background-size: contain;
+    background-repeat: no-repeat;
+	width: 100%;
+	height: 0;
+	padding-top: 68.76%; // ratio of the image
+}

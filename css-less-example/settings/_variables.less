@@ -1,0 +1,94 @@
+/*------------------------------------*\
+    #VARIABLES
+\*------------------------------------*/
+
+
+// 1. Colours
+
+// 2. Other
+@images: ~'/img/';
+
+// 3. Z-index levels
+@lvl-neg: -1;
+@lvl-1: 100;
+@lvl-2: 200;
+@lvl-3: 300;
+@lvl-4: 400;
+@lvl-5: 500;
+@lvl-6: 600;
+@lvl-7: 700;
+@lvl-8: 800;
+@lvl-9: 900;
+@lvl-inf: 999999;
+
+// 4. Fonts
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+
+// 5. Foundation media queries (Use with Foundation or modified bootstrap)
+
+// Small screens
+@sm-screens: ~'only screen and (max-width: 40em)'; // max-width 640px, mobile-only styles, use when QAing mobile issues
+@sm-screens-l: ~'only screen and (max-width: 40em) and (orientation : landscape)';
+@sm-screens-p: ~'only screen and (max-width: 40em) and (orientation : portrait)';
+
+// Medium screens
+@md-screens-up: ~'only screen and (min-width: 40.063em)'; // min-width 641px, medium screens
+
+@md-screens-only: ~'only screen and (min-width: 40.063em) and (max-width: 64em)'; // min-width 641px and max-width 1024px, use when QAing tablet-only issues
+@md-screens-only-l: ~'only screen and (min-width: 40.063em) and (max-width: 64em) and (orientation : landscape)';
+@md-screens-only-p: ~'only screen and (min-width: 40.063em) and (max-width: 64em) and (orientation : portrait)';
+
+// Large screens
+@lg-screens-up: ~'only screen and (min-width: 64.063em)'; // min-width 1025px, large screens
+
+@lg-screens-only: ~'only screen and (min-width: 64.063em) and (max-width: 90em)'; // min-width 1025px and max-width 1440px, use when QAing large screen-only issues
+
+// XLarge screens
+@xlg-screens-up: ~'only screen and (min-width: 90.063em)'; // min-width 1441px, xlarge screens
+
+@xlg-screens-only: ~'only screen and (min-width: 90.063em) and (max-width: 120em)'; // min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues
+
+// XXLarge screens
+@xxlg-screens: ~'only screen and (min-width: 120.063em)'; // min-width 1921px, xxlarge screens
+
+// 6. Specific media queries
+// iPhones
+@iphone:  ~"only screen and (min-device-width : 320px) and (max-device-width : 568px)";
+@iphone-l:  ~"only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : landscape)";
+@iphone-p:  ~"only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait)";
+
+// iPads
+@ipad: ~'only screen and (min-device-width : 768px) and (max-device-width : 1024px)';
+@ipad-l: ~'only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)';
+@ipad-p: ~'only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)';
+
+// probably some android devices next...
+
+// 7. Bootstrap media queries (Use with Bootstrap!)
+// Breakpoints:
+@xsm-brp: 480px;
+@sm-brp: 768px;
+@md-brp: 992px;
+@lg-brp: 1200px;
+
+// Extensions
+@screen: ~'only screen';
+@portrait: ~'(orientation : portrait)';
+@landscape: ~'(orientation : landscape)';
+
+
+// Small devices (tablets, @sm-brp and up)
+@sm-devices: ~'(min-width : @{sm-brp})';
+@sm-devices-p: ~'(min-width : @{sm-brp}) and @{portrait}';
+@sm-devices-l: ~'(min-width : @{sm-brp}) and @{landscape}';
+
+// Medium devices (desktops, @md-brp and up)
+@md-devices: ~'(min-width : @{md-brp})';
+
+// Large devices (large desktops, @lg-brp and up)
+@lg-devices: ~'(min-width : @{lg-brp})';
+
+// No hover media query, assumes anything that is below 1024px with screen is mobile/tablet
+@no-hover: ~'@{screen} (max-width:1024px)';
