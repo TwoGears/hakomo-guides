@@ -1,6 +1,6 @@
 #Coding Guides
 
-###1. [CSS/LESS Guide](https://github.com/TwoGears/tg-guides/tree/master/style-guides/CSS.md)
+###1. [CSS/LESS Guide](https://github.com/TwoGears/tg-guides/tree/master/style-guides/css.md)
 
 ###2. [JavaScript](https://github.com/TwoGears/tg-guides/tree/master/style-guides/js.md)
 
