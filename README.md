@@ -1,10 +1,10 @@
 #Coding Guides
 
-###1. [CSS/LESS Guide](https://github.com/TwoGears/tg-guides/blob/master/style-guides/CSS.md)
+###1. [CSS/LESS Guide](https://github.com/TwoGears/tg-guides/tree/master/style-guides/CSS.md)
 
-###2. [JavaScript](https://github.com/TwoGears/tg-guides/blob/master/style-guides/js.md)
+###2. [JavaScript](https://github.com/TwoGears/tg-guides/tree/master/style-guides/js.md)
 
-###3. [Python](https://github.com/TwoGears/tg-guides/blob/master/style-guides/python.md)
+###3. [Python](https://github.com/TwoGears/tg-guides/tree/master/style-guides/python.md)
 
 #Best Practices
 
