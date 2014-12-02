@@ -16,6 +16,6 @@
 
 #Sublime Text
 
-###1. [Keyboard Shortcuts]()
+###1. [Keyboard Shortcuts](https://github.com/TwoGears/tg-guides/tree/master/sublime-text/keyboard-shortcuts.md)
 
-###2. [Setup (Plugins, Settings)]()
+###2. [Setup (Plugins, Settings)](https://github.com/TwoGears/tg-guides/tree/master/sublime-text/plugins.md)

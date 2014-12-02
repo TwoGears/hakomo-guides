@@ -1,5 +1,6 @@
 #JavaScript Style Guide
 
+[Go Back](https://github.com/TwoGears/tg-guides/tree/master/)
 
 
 ##Table Of Contents
