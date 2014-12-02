@@ -6,6 +6,8 @@
 
 ###3. [Python](https://www.python.org/dev/peps/pep-0008)
 
+###4. [Django](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/)
+
 #Best Practices
 
 ###1. [JavaScript](https://github.com/TwoGears/tg-guides/blob/master/best-practices/js.md)
@@ -14,6 +16,6 @@
 
 #Sublime Text
 
-###1. Keyboard Shortcuts
+###1. [Keyboard Shortcuts]()
 
-###2. Necessary Plugins
+###2. [Setup (Plugins, Settings)]()
