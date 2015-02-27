@@ -12,40 +12,40 @@
 
 - launch terminal:
 - open terminal.txt and copy data. 
-$ vim ~/.bash_profile
+```$ vim ~/.bash_profile```
 - type i, paste, ESC, :wq, ENTER
 
-$ curl -sL https://raw.githubusercontent.com/djl/vcprompt/master/bin/vcprompt > ~/bin/vcprompt
-$ chmod 755 ~/bin/vcprompt
-$ echo "export PATH=$PATH:~/bin" >>  ~/.bash_profile && source ~/.bash_profile
+```$ curl -sL https://raw.githubusercontent.com/djl/vcprompt/master/bin/vcprompt > ~/bin/vcprompt```
+```$ chmod 755 ~/bin/vcprompt```
+```$ echo "export PATH=$PATH:~/bin" >>  ~/.bash_profile && source ~/.bash_profile```
 
-$ echo "eval "$(rbenv init -)" >> ~/.bash_profile && source ~/.bash_profile
+```$ echo "eval "$(rbenv init -)" >> ~/.bash_profile && source ~/.bash_profile```
 
-$ cd ~
-$ mkdir www
+```$ cd ~```
+```$ mkdir www```
 ALT+TAB to Finder, press CMD+N, drag the www to the sidebar, for easy access
 ALT+TAB to Finder, press CMD+, choose www instead of "All My Files", so "www" loads instead of "All my files"
-$ mkdir .ssh
-$ ssh-keygen -t rsa -C "your_email@example.com"
-$ echo "ssh-add ~/.ssh/id_rsa" >>  ~/.bash_profile && source ~/.bash_profile
+```$ mkdir .ssh```
+```$ ssh-keygen -t rsa -C "your_email@example.com"```
+```$ echo "ssh-add ~/.ssh/id_rsa" >>  ~/.bash_profile && source ~/.bash_profile```
 
-$ sudo pip install virtualenv
+```$ sudo pip install virtualenv```
 
 Preparation:
-$ sudo npm isntall -g less
-$ sudo pip isntall flake8
-$ sudo npm install -g jshint
-$ sudo npm install -g gulp
-$ curl https://raw.githubusercontent.com/TwoGears/tg-guides/master/sublime-text/jshint.rc > ~/www/jshint.rc
+```$ sudo npm isntall -g less```
+```$ sudo pip isntall flake8```
+```$ sudo npm install -g jshint```
+```$ sudo npm install -g gulp```
+```$ curl https://raw.githubusercontent.com/TwoGears/tg-guides/master/sublime-text/jshint.rc > ~/www/jshint.rc```
 
 Command Line Tools
-$ gcc
+```$ gcc```
 then click install or get XCODE
 
 ##PIP
 
 - download https://bootstrap.pypa.io/get-pip.py
-$ sudo python get-pip.py
+```$ sudo python get-pip.py```
 
 ##Programs:
 
