@@ -15,21 +15,25 @@
 ```$ vim ~/.bash_profile```
 - type i, paste, ESC, :wq, ENTER
 
-```$ curl -sL https://raw.githubusercontent.com/djl/vcprompt/master/bin/vcprompt > ~/bin/vcprompt```
-```$ chmod 755 ~/bin/vcprompt```
-```$ echo "export PATH=$PATH:~/bin" >>  ~/.bash_profile && source ~/.bash_profile```
+```
+$ curl -sL https://raw.githubusercontent.com/djl/vcprompt/master/bin/vcprompt > ~/bin/vcprompt
+$ chmod 755 ~/bin/vcprompt
+$ echo "export PATH=$PATH:~/bin" >>  ~/.bash_profile && source ~/.bash_profile
 
-```$ echo "eval "$(rbenv init -)" >> ~/.bash_profile && source ~/.bash_profile```
+$ echo "eval "$(rbenv init -)" >> ~/.bash_profile && source ~/.bash_profile
 
-```$ cd ~```
-```$ mkdir www```
+$ cd ~
+$ mkdir www
+
+$ mkdir .ssh
+$ ssh-keygen -t rsa -C "your_email@example.com"
+$ echo "ssh-add ~/.ssh/id_rsa" >>  ~/.bash_profile && source ~/.bash_profile
+
+$ sudo pip install virtualenv
+```
+
 ALT+TAB to Finder, press CMD+N, drag the www to the sidebar, for easy access
 ALT+TAB to Finder, press CMD+, choose www instead of "All My Files", so "www" loads instead of "All my files"
-```$ mkdir .ssh```
-```$ ssh-keygen -t rsa -C "your_email@example.com"```
-```$ echo "ssh-add ~/.ssh/id_rsa" >>  ~/.bash_profile && source ~/.bash_profile```
-
-```$ sudo pip install virtualenv```
 
 Preparation:
 ```$ sudo npm isntall -g less```
