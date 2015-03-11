@@ -23,9 +23,16 @@ pg_restore --verbose --clean --no-acl --no-owner -j 2 -h localhost -U pp -d eltr
 
 ### On Heroku
 
+
+
 1. Stop heroku:
 ```
 heroku maintenance:on
+```
+
+1. Backup
+```
+heroku pgbackups:capture
 ```
 
 2. Get the new changes:
