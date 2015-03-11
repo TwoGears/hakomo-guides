@@ -31,24 +31,24 @@ heroku maintenance:on
 ```
 
 1. Backup
-```
-heroku pgbackups:capture
-```
+  ```
+  heroku pgbackups:capture
+  ```
 
 2. Get the new changes:
-```
-git push heroku master
-```
+  ```
+  git push heroku master
+  ```
 
 3. Do all necessary migrations
-```
-heroku run python manage.py migrate
-```
-NOTE: on older versions with south, you might need to add the app name at the end
+  ```
+  heroku run python manage.py migrate
+  ```
+  **NOTE: on older versions with south, you might need to add the app name at the end**
 
 4. Turn on heroku again
-```
-heroku maintenance:off
-```
+  ```
+  heroku maintenance:off
+  ```
 
 5. **Test it!!!**
