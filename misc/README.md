@@ -23,25 +23,25 @@ pg_restore --verbose --clean --no-acl --no-owner -j 2 -h localhost -U pp -d eltr
 
 ### On Heroku
 
-Stop heroku:
+1. Stop heroku:
 ```
 heroku maintenance:on
 ```
 
-Get the new changes:
+2. Get the new changes:
 ```
 git push heroku master
 ```
 
-Do all necessary migrations
+3. Do all necessary migrations
 ```
 heroku run python manage.py migrate
 ```
 NOTE: on older versions with south, you might need to add the app name at the end
 
-Turn on heroku again
+4. Turn on heroku again
 ```
 heroku maintenance:off
 ```
 
-*Test it!!!*
+5. **Test it!!!**
