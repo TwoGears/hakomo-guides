@@ -36,11 +36,13 @@ ALT+TAB to Finder, press CMD+N, drag the www to the sidebar, for easy access
 ALT+TAB to Finder, press CMD+, choose www instead of "All My Files", so "www" loads instead of "All my files"
 
 Preparation:
-```$ sudo npm isntall -g less```
-```$ sudo pip isntall flake8```
-```$ sudo npm install -g jshint```
-```$ sudo npm install -g gulp```
-```$ curl https://raw.githubusercontent.com/TwoGears/tg-guides/master/sublime-text/jshint.rc > ~/www/jshint.rc```
+```
+$ sudo npm install -g less
+$ sudo pip install flake8
+$ sudo npm install -g jshint
+$ sudo npm install -g gulp
+$ curl https://raw.githubusercontent.com/TwoGears/tg-guides/master/sublime-text/jshint.rc > ~/www/jshint.rc
+```
 
 Command Line Tools
 ```$ gcc```
