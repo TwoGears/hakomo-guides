@@ -62,7 +62,8 @@ Now you need to copy-paste the code it gave you to `~/.ssh/config` and also repl
 
 ## Homebrew
 ```
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ brew doctor
 ```
 
 ##Programs:
