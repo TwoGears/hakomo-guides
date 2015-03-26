@@ -53,6 +53,18 @@ then click install or get XCODE
 - download https://bootstrap.pypa.io/get-pip.py
 ```$ sudo python get-pip.py```
 
+## Heroku accounts for multiple heroku accounts
+```
+$ heroku plugins:install git://github.com/ddollar/heroku-accounts.git
+$ heroku accounts:add account_name
+```
+Now you need to copy-paste the code it gave you to `~/.ssh/config` and also replace the `PATH/TO/PRIVATE/KEY` with the real path to your real new or old key
+
+## Homebrew
+```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
 ##Programs:
 
 General instructions: download, open DMG, drag icon to applications, dbl click applications, drag application in dock. Eject disk, delete dmg.
