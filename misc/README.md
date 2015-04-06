@@ -2,8 +2,13 @@
 
 ## Backup and import Postgres database
 
-Capture:
+Capture on NEW HEROKU CLI:
+```
+heroku pg:backups capture --app APP_NAME
+curl -o latest2.dump `heroku pg:backups public-url b001 --app APP_NAME`
+```
 
+Capture on OLD HEROKU:
 ```
 heroku pgbackups:capture
 curl -o latest.dump `heroku pgbackups:url`
