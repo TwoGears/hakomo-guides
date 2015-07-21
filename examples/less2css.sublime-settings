@@ -1,0 +1,12 @@
+{
+	"autoCompile": true,
+	"ignorePrefixedFiles": true,
+	"lessBaseDir": ".",
+	"lesscCommand": "/Users/lttoshev/npm/bin/lessc",
+	"main_file": "../main.less",
+	"minName": false,
+	"minify": true,
+	"outputDir": "./",
+	"outputFile": "",
+	"showErrorWithWindow": false
+}
