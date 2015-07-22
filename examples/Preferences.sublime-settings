@@ -21,6 +21,11 @@
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_wrap": true,
-	"line_padding_bottom": 1,
-	"line_padding_bottom": 1,
+	"line_padding_bottom": 1, // Makes text
+	"line_padding_bottom": 1, // more readable
+	"indent_guide_options": // Increases visibility of indentation lines
+    [
+        "draw_normal",
+        "draw_active"
+    ],
 }
