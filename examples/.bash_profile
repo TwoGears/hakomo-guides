@@ -51,7 +51,7 @@ print_before_the_prompt () {
 PROMPT_COMMAND=print_before_the_prompt
 # PS1=''
 
-source .profile
+source ~/.profile
 
 ###########
 # Aliases #
@@ -152,10 +152,175 @@ function rr() {
     return 0
 }
 
+function ask() {
+    # Credits: http://djm.me/ask
+    while true; do
+
+        if [ "${2:-}" = "Y" ]; then
+            prompt="Y/n"
+            default=Y
+        elif [ "${2:-}" = "N" ]; then
+            prompt="y/N"
+            default=N
+        else
+            prompt="y/n"
+            default=
+        fi
+
+        # Ask the question - use /dev/tty in case stdin is redirected from somewhere else
+        read -p "$1 [$prompt] " REPLY </dev/tty
+
+        # Default?
+        if [ -z "$REPLY" ]; then
+            REPLY=$default
+        fi
+
+        # Check if the reply is valid
+        case "$REPLY" in
+            Y*|y*) return 0 ;;
+            N*|n*) return 1 ;;
+        esac
+
+    done
+}
+
+function coloredEcho(){
+    # Based on: http://stackoverflow.com/a/23006365
+    local exp=$1;
+    local color=$2;
+    local bgcolor=$3
+
+    if ! [[ $color =~ '^[0-9]$' ]] ; then
+       case $(echo $color | tr '[:upper:]' '[:lower:]') in
+        black) color=0 ;;
+        red) color=1 ;;
+        green) color=2 ;;
+        yellow) color=3 ;;
+        blue) color=4 ;;
+        magenta) color=5 ;;
+        cyan) color=6 ;;
+        white|*) color=7 ;; # white or invalid color
+       esac
+    fi
+
+    if ! [[ $bgcolor =~ '^[0-9]$' ]] ; then
+       case $(echo $bgcolor | tr '[:upper:]' '[:lower:]') in
+        black) bgcolor=0 ;;
+        red) bgcolor=1 ;;
+        green) bgcolor=2 ;;
+        yellow) bgcolor=3 ;;
+        blue) bgcolor=4 ;;
+        magenta) bgcolor=5 ;;
+        cyan) bgcolor=6 ;;
+        white|*) bgcolor=7 ;; # white or invalid bgcolor
+       esac
+    fi
+
+    tput setaf $color;
+
+    if [ "$#" -eq  "3" ]
+    then
+        tput setab $bgcolor;
+    fi
+
+    echo $exp;
+    tput sgr0;
+}
+
+function ionapp() {
+    # Setups an ionic app from https://github.com/TwoGears/ionic-seed
+    if [ "$#" -ne 1 ]
+    then
+        coloredEcho "App name missing!" red;
+    else
+        coloredEcho "Cloning repo..." blue;
+        git clone https://github.com/TwoGears/ionic-seed.git
+
+        coloredEcho "Renaming the project to '$1' ..." blue;
+        mv ionic-seed $1
+
+        cd $1 && rm -rf .git
+
+        read -p "Git repo: " gitRepo
+
+        if [ -z "$gitRepo" ]; then
+            coloredEcho "No git repo provided. Moving on" blue;
+        else
+            git init
+            git remote add origin $gitRepo
+        fi
+
+        npm run setup
+
+        coloredEcho "It's best if you rename the app now." yellow;
+        coloredEcho "You can now start the app with ionic serve" cyan;
+    fi
+}
+
+function releaseapp() {
+    # Builds for ios and android. Signes and zips android builds.
+    # Assumes the project has crosswalk browser installed
+    if [ -a ionic.project ]
+    then
+        coloredEcho "Switching to production environment..." blue
+
+        gulp prod
+
+        coloredEcho "Removing development plugins..." blue
+        ionic plugin remove cordova-plugin-console
+
+        if ask "Bump version?" Y; then
+            read -p "What to bump? <--patch, --minor, --major or --setversion=0.0.0> " bumpValue
+            gulp bump $bumpValue
+        fi
+
+        if ask "Build for iOS?" Y; then
+            coloredEcho "Building for iOS..." magenta
+            ionic build ios
+            coloredEcho "!" yellow
+            coloredEcho "Don't forget to upload the project from Xcode!" red
+            coloredEcho "!" yellow
+        fi
+
+        if ask "Build for android?" Y; then
+            coloredEcho "Building for android..." cyan
+
+            read -p "Name of the files: " androidNamePrompt
+
+            cordova build --release android -- --minSdkVersion=15
+
+            rr ../$androidNamePrompt-x86.apk
+            rr ../$androidNamePrompt-armv7.apk
+
+            jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore platforms/android/build/outputs/apk/folded-release-key.keystore platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk folded-release-key
+            jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore platforms/android/build/outputs/apk/folded-release-key.keystore platforms/android/build/outputs/apk/android-x86-release-unsigned.apk folded-release-key
+
+            zipalign -v 4 platforms/android/build/outputs/apk/android-x86-release.apk ../$1-x86.apk
+            zipalign -v 4 platforms/android/build/outputs/apk/android-armv7-release.apk ../$1-armv7.apk
+
+            coloredEcho "TODO: Conditions and failsafes"
+        fi
+
+        coloredEcho "Switching to development..." blue
+
+        ionic plugin add cordova-plugin-console
+
+        gulp dev
+
+
+    else
+        coloredEcho "You must be in a ionic project folder." red
+    fi
+
+    return 0
+}
+
 ###########
 # Exports #
 ###########
 
-# EXPORTS here
+export DEV="True"
+# other exports...
+# ...
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
