@@ -64,7 +64,8 @@ alias ll="ls -la"
 alias cd..="cd .."
 alias mkdir="mkdir -pv"
 alias reloadbash="source ~/.bash_profile"
-
+alias pipfreeze="pip freeze > requirements.txt"
+alias rmpyc="find . -name \*.pyc -delete"
 
 #############
 # Functions #
@@ -119,16 +120,17 @@ function dj() {
     else
         if [ -a manage.py ]
         then
-            if [ "$#" -ne 1 ]
+            if [ "$#" -lt 1 ]
             then
                 echo "What do you want to do with the project?"
             else
                 case $1 in
-                    run) python manage.py runserver;;
+                    run) python manage.py runserver $2;;
                     make) python manage.py makemigrations;;
                     mg) python manage.py migrate;;
                     collect) python manage.py collectstatic -i node_modules;;
-                    *) python manage.py $1;;
+                    heroku) heroku run python manage.py $2 $3 $4;;
+                    *) python manage.py "$@";;
                 esac
             fi
         else
