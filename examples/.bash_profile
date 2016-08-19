@@ -259,10 +259,8 @@ function ionapp() {
     fi
 }
 
-function releaseapp() {
-    # Builds for ios and android. Signes and zips android builds.
-    # Assumes the project has crosswalk browser installed
-    if [ -a ionic.project ]
+function ionreleaseapp() {
+    if [ -a ionic.project ] || [ -a ionic.config.json ]
     then
         coloredEcho "Switching to production environment..." blue
 
@@ -289,7 +287,7 @@ function releaseapp() {
 
             read -p "Name of the files: " androidNamePrompt
 
-            cordova build --release android -- --minSdkVersion=15
+            ionic build --release android
 
             rr ../$androidNamePrompt-x86.apk
             rr ../$androidNamePrompt-armv7.apk
@@ -297,8 +295,8 @@ function releaseapp() {
             jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore platforms/android/build/outputs/apk/folded-release-key.keystore platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk folded-release-key
             jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore platforms/android/build/outputs/apk/folded-release-key.keystore platforms/android/build/outputs/apk/android-x86-release-unsigned.apk folded-release-key
 
-            zipalign -v 4 platforms/android/build/outputs/apk/android-x86-release.apk ../$1-x86.apk
-            zipalign -v 4 platforms/android/build/outputs/apk/android-armv7-release.apk ../$1-armv7.apk
+            zipalign -v 4 platforms/android/build/outputs/apk/android-x86-release-unsigned.apk ../$androidNamePrompt-x86.apk
+            zipalign -v 4 platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk ../$androidNamePrompt-armv7.apk
 
             coloredEcho "TODO: Conditions and failsafes"
         fi
@@ -308,8 +306,6 @@ function releaseapp() {
         ionic plugin add cordova-plugin-console
 
         gulp dev
-
-
     else
         coloredEcho "You must be in a ionic project folder." red
     fi
